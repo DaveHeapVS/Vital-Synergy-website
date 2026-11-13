@@ -1124,3 +1124,39 @@ body {
 
 .soc-btn i { font-size: 13px; }
 .sec-alt { background: #f9f9f9; }
+
+/* ===== Outage banner (TEMPORARY) ===== */
+.outage-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 56px 14px 20px;
+  background: #000;
+  color: #fff;
+  border-bottom: 3px solid #fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.3);
+  transform: translateY(-110%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.outage-banner.show { transform: translateY(0); }
+.outage-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+.outage-text { margin: 0; font-size: 0.95rem; line-height: 1.5; font-weight: 500; }
+.outage-text strong { font-weight: 800; letter-spacing: -0.01em; }
+.outage-urgent { font-weight: inherit; }
+.outage-phone { color: #fff; font-weight: 800; font-size: 1.05rem; text-decoration: underline; text-underline-offset: 3px; }
+.outage-phone:hover { text-decoration-thickness: 2px; }
+.outage-phone:focus-visible, .outage-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.outage-close {
+  position: absolute; top: 50%; right: 14px; width: 34px; height: 34px;
+  margin-top: -17px; border: 0; border-radius: 50%;
+  background: rgba(255,255,255,0.18); color: #fff; font-size: 1.4rem; line-height: 1;
+  cursor: pointer; transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.outage-close:hover { opacity: 0.8; }
+.outage-close:active { transform: scale(0.92); }
+@media (max-width: 640px) {
+  .outage-banner { padding: 12px 48px 12px 14px; }
+  .outage-text { font-size: 0.85rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .outage-banner { transition: none; }
+}
