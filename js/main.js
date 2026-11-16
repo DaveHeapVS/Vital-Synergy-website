@@ -1,33 +1,3 @@
-// TEMPORARY outage banner. To remove: delete this block and the "Outage banner" block in css/style.css.
-(function () {
-  const PHONE_DISPLAY = '01282 773338';
-  const PHONE_LINK = '01282773338';
-  const KEY = 'outage-banner-dismissed';
-
-  try { if (sessionStorage.getItem(KEY)) return; } catch (e) { /* show banner anyway */ }
-
-  const bar = document.createElement('div');
-  bar.className = 'outage-banner';
-  bar.setAttribute('role', 'alert');
-  bar.innerHTML =
-    '<div class="outage-inner">' +
-      '<p class="outage-text"><strong>We are currently experiencing technical issues with our email system.</strong> ' +
-      'For <span class="outage-urgent">urgent enquiries only</span>, please call ' +
-      '<a class="outage-phone" href="tel:' + PHONE_LINK + '">' + PHONE_DISPLAY + '</a>. ' +
-      'For everything else, please bear with us while we get back online.</p>' +
-    '</div>' +
-    '<button type="button" class="outage-close" aria-label="Dismiss notice">&times;</button>';
-  document.body.appendChild(bar);
-
-  requestAnimationFrame(() => requestAnimationFrame(() => bar.classList.add('show')));
-
-  bar.querySelector('.outage-close').addEventListener('click', () => {
-    bar.classList.remove('show');
-    try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* ignore */ }
-    setTimeout(() => bar.remove(), 600);
-  });
-}());
-
 // Back to top
 const btt = document.createElement('button');
 btt.className = 'back-to-top';
